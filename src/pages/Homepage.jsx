@@ -23,19 +23,23 @@ export default function Homepage() {
   }, [])
 
   React.useEffect(() => {
-    var arr = localStorage.getItem('MyTickets').split(',');
-    sendRequest("/api/support-tickets/getAllTicketsById", "POST", { tickets: arr })
-      .then((res) => {
-        if (res.success) {
-          // console.log(res.data)
-          var data = res.data
-          tickets.splice(0, tickets.length);
-          setTickets([...data]);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    var arr = localStorage.getItem('MyTickets');
+    if (arr != null) {
+      arr = arr.split(',')
+      sendRequest("/api/support-tickets/getAllTicketsById", "POST", { tickets: arr })
+        .then((res) => {
+          if (res.success) {
+            // console.log(res.data)
+            var data = res.data
+            tickets.splice(0, tickets.length);
+            setTickets([...data]);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
