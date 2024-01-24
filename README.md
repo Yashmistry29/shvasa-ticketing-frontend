@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. Firstly clone this repository from github
 
 ```sh
-git clone https://github.com/Yashmistry29/shvasa-ticketing-backend.git
+git clone https://github.com/Yashmistry29/shvasa-ticketing-frontend.git
 ```
 
 2. Then move to the project directory
