@@ -28,7 +28,6 @@ function TicketModal() {
   }
 
   const handleSubmit = (e) => {
-    localStorage.setItem('array', ['1', '2', '3']);
     e.preventDefault();
     const validationErrors = validateTicket(data);
     const isValid = Object.keys(validationErrors).length === 0;
@@ -63,9 +62,12 @@ function TicketModal() {
   };
 
   React.useEffect(() => {
-    var arr = localStorage.getItem('MyTickets').split(',');
-    tickets.splice(0, tickets.length);
-    setTickets([...arr]);
+    var arr = localStorage.getItem('MyTickets')
+    if (arr != null) {
+      arr = arr.split(',')
+      tickets.splice(0, tickets.length);
+      setTickets([...arr]);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
