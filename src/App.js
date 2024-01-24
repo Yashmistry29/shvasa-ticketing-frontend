@@ -1,24 +1,50 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route, Routes,
+} from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import Homepage from './pages/Homepage';
+import Header from './components/HeaderElements/Header';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Dashboard from './pages/Dashboard';
+import 'tachyons';
+import DashboardHeader from './components/HeaderElements/DashboardHeader';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Router>
+        <Routes>
+          <Route path='/' element={
+            <>
+              <Header />
+              <Homepage />
+            </>
+          } />
+          <Route path='/login' element={
+            <>
+              <Header />
+              <Login />
+            </>
+          } />
+          <Route path='/signup' element={
+            <>
+              <Header />
+              <Signup />
+            </>
+          } />
+          <Route path='/dashboard' element={
+            <>
+              <DashboardHeader />
+              <Dashboard />
+            </>
+          } />
+        </Routes>
+      </Router>
+    </React.Fragment>
   );
 }
 
